@@ -103,7 +103,7 @@ public:
             if(nums1[i] < nums2[j]){
 
                 if(k == element_1_idx) element_1 = nums1[i];
-                else if(k == element_2_idx) element_2 = nums1[i]; 
+                if(k == element_2_idx) element_2 = nums1[i]; 
 
                 i++;
             }
@@ -111,7 +111,7 @@ public:
             else{
 
                 if(k == element_1_idx) element_1 = nums2[j];
-                else if(k == element_2_idx) element_2 = nums2[j]; 
+                if(k == element_2_idx) element_2 = nums2[j]; 
 
                 j++;
             }
@@ -122,7 +122,7 @@ public:
         while(i < n){
 
             if(k == element_1_idx) element_1 = nums1[i];
-            else if(k == element_2_idx) element_2 = nums1[i]; 
+            if(k == element_2_idx) element_2 = nums1[i]; 
 
             i++;
             k++;
@@ -131,7 +131,7 @@ public:
         while(j < m){
 
             if(k == element_1_idx) element_1 = nums2[j];
-            else if(k == element_2_idx) element_2 = nums2[j]; 
+            if(k == element_2_idx) element_2 = nums2[j]; 
 
             j++;
             k++;
@@ -140,7 +140,9 @@ public:
         if((m+n)% 2 == 0) return (element_1 + element_2)/2.0;
         return element_1;
     }
+
 };
+
 
 //--------------------------------------------------------------------------
 
