@@ -1,16 +1,21 @@
-#include <iostream>
-#include <sstream>
-#include <string>
+#include<iostream>
+#include<vector>
+#include<string>
+#include<climits>
+#include<cmath>
+#include<algorithm>
+#include<unordered_map>
+#include<map>
+#include<unordered_set>
+#include<set>
+#include<stack>
+#include<queue>
 using namespace std;
 
-int main() {
-    std::string input = "dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext";
-    std::stringstream ss(input);
-    std::string line;
+int main(){
 
-    while (getline(ss, line, '\n')) {
-        cout<<line<<" "<<line.length()<<endl;
-    }
+    vector<int> nums = {1,2,3,4,5,6,7,8};
+    reverse(nums.begin()+1, nums.end());
 
-    return 0;
+    for(int i=0; i<nums.size(); i++) cout<<nums[i]<<" ";
 }
