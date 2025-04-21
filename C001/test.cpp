@@ -10,12 +10,26 @@
 #include<set>
 #include<stack>
 #include<queue>
+#include<bitset>
 using namespace std;
 
 int main(){
 
-    vector<int> nums = {1,2,3,4,5,6,7,8};
-    reverse(nums.begin()+1, nums.end());
+    int decimal = 237;
 
-    for(int i=0; i<nums.size(); i++) cout<<nums[i]<<" ";
+    bitset<8> binary8(decimal);
+    cout<<binary8<<endl;
+
+    bitset<9> binary9(decimal);
+    cout<<binary9<<endl;
+
+    cout<<binary9[4]<<endl;
+
+    int decima2 = 25;
+    bitset<8>binary_88(decima2);
+    string toBinary = binary_88.to_string();
+
+    cout<<toBinary<<endl;
+    cout<<toBinary[0]<<endl;
+    cout<<toBinary[3]<<endl;
 }

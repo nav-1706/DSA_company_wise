@@ -1,23 +1,51 @@
-#include <iostream>
-#include <string>
+// LEETCODE 904
 
+#include<iostream>
+#include<vector>
+#include<string>
+#include<climits>
+#include<cmath>
+#include<algorithm>
+#include<unordered_map>
+#include<map>
+#include<unordered_set>
+#include<set>
+#include<stack>
+#include<queue>
 using namespace std;
 
-int main() {
-    string str = "\t\tfile.ext";
+// Think About the Sliding Window, whenever there is sub-aaray
 
-    size_t lastTab = str.rfind('\t');
+class Solution {
+public:
+    int totalFruit(vector<int>& fruits) {
+        
+        if(fruits.size() == 1 || fruits.size() == 2) return fruits.size();
 
-    if (lastTab != string::npos) {
-        cout << "Last tab found at index: " << lastTab << "\n";
-    } else {
-        cout << "No tab found.\n";
+        unordered_map<int,int>mp; // <type, freq>
+
+        int i = 0;
+        int j = 0;
+        int max_count = 0;
+        int k = 2; // 2 basket
+        int n = fruits.size();
+
+        while(j < n){
+                
+            mp[fruits[j]]++;
+                
+            while( i < j && mp.size() > k){
+
+                mp[fruits[i]]--;
+                if(mp[fruits[i]] == 0) mp.erase(fruits[i]);
+                i++;
+            }
+            
+            max_count = max(max_count, j-i+1);
+
+            j++;
+        }
+
+        return max_count;
     }
-
-    cout<<"printing 1st char"<<str[1]<<endl;
-    cout<<"Hello"<<endl;
-
-    cout<<str.size()<<endl;
-
-    return 0;
-}
+};
