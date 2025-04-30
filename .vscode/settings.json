@@ -8,6 +8,8 @@
         "xstring": "cpp",
         "xtree": "cpp",
         "xutility": "cpp",
-        "bitset": "cpp"
+        "bitset": "cpp",
+        "queue": "cpp",
+        "stack": "cpp"
     }
 }

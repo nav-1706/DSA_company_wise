@@ -10,26 +10,67 @@
 #include<set>
 #include<stack>
 #include<queue>
-#include<bitset>
 using namespace std;
 
+class TreeNode{
+public:
+    int val;
+    TreeNode*left;
+    TreeNode*right;
+    TreeNode(int val){ // constructor
+        this->val = val;
+        this->left = NULL;
+        this->right = NULL;
+    }
+};
+
+// string serialize(TreeNode* root) {
+        
+//     if(root == NULL) return "";
+//     return to_string(root->val) + "(" + serialize(root->left) + ")" + "(" + serialize(root->right) + ")";  
+// }
+
+void serial(TreeNode* root, string &str){
+
+    if(root == NULL){
+        // str.pop_back();
+        return;
+    }
+
+    str += to_string(root->val);
+
+    str += "(";
+    serial(root->left, str);
+    str += ")";
+
+    str += "(";
+    serial(root->right, str);
+    str += ")";
+}
+
+string serialize(TreeNode* root) {
+    
+    if(root == NULL) return "";
+    string str;
+    serial(root, str);
+    // cout<<str<<endl;
+    return str;
+}
+
 int main(){
+    
+    TreeNode *a = new TreeNode(4);
+    TreeNode *b = new TreeNode(2);
+    TreeNode *c = new TreeNode(3);
+    TreeNode *d = new TreeNode(1);
+    TreeNode *e = new TreeNode(6);
+    TreeNode *f = new TreeNode(5);
 
-    int decimal = 237;
+    a->left = b;
+    b->left = c;
+    b->right = d;
+    a->right = e;
+    e->right = f;
 
-    bitset<8> binary8(decimal);
-    cout<<binary8<<endl;
-
-    bitset<9> binary9(decimal);
-    cout<<binary9<<endl;
-
-    cout<<binary9[4]<<endl;
-
-    int decima2 = 25;
-    bitset<8>binary_88(decima2);
-    string toBinary = binary_88.to_string();
-
-    cout<<toBinary<<endl;
-    cout<<toBinary[0]<<endl;
-    cout<<toBinary[3]<<endl;
+    cout<<serialize(a)<<endl;
 }
