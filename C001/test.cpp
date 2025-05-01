@@ -12,65 +12,31 @@
 #include<queue>
 using namespace std;
 
-class TreeNode{
-public:
-    int val;
-    TreeNode*left;
-    TreeNode*right;
-    TreeNode(int val){ // constructor
-        this->val = val;
-        this->left = NULL;
-        this->right = NULL;
-    }
-};
-
-// string serialize(TreeNode* root) {
-        
-//     if(root == NULL) return "";
-//     return to_string(root->val) + "(" + serialize(root->left) + ")" + "(" + serialize(root->right) + ")";  
-// }
-
-void serial(TreeNode* root, string &str){
-
-    if(root == NULL){
-        // str.pop_back();
-        return;
-    }
-
-    str += to_string(root->val);
-
-    str += "(";
-    serial(root->left, str);
-    str += ")";
-
-    str += "(";
-    serial(root->right, str);
-    str += ")";
-}
-
-string serialize(TreeNode* root) {
-    
-    if(root == NULL) return "";
-    string str;
-    serial(root, str);
-    // cout<<str<<endl;
-    return str;
-}
-
 int main(){
-    
-    TreeNode *a = new TreeNode(4);
-    TreeNode *b = new TreeNode(2);
-    TreeNode *c = new TreeNode(3);
-    TreeNode *d = new TreeNode(1);
-    TreeNode *e = new TreeNode(6);
-    TreeNode *f = new TreeNode(5);
 
-    a->left = b;
-    b->left = c;
-    b->right = d;
-    a->right = e;
-    e->right = f;
+    int pattern_day = 7;
+    vector<int>cells = {0,1,0,1,1,0,0,1};
+    vector<int>updated_cells = cells;
 
-    cout<<serialize(a)<<endl;
+    for(int i=1; i<=pattern_day; i++){
+
+        for(int j=1; j<=6; j++){
+
+            if(
+                (cells[j-1] == 0 && cells[j+1] == 0) ||
+                (cells[j-1] == 1 && cells[j+1] == 1)
+            ){
+                updated_cells[j] = 1;
+            }
+
+            else updated_cells[j] = 0;
+        }
+        updated_cells[0] = 0;
+        updated_cells[7] = 0;
+
+        cells = updated_cells;
+    }
+
+    for(int i=0; i<8; i++) cout<<cells[i]<<" ";
+
 }
